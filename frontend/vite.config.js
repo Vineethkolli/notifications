@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ensure the correct base path
+  base: './', // Set base path for deployment
   build: {
-    outDir: 'dist', // Ensure the output directory matches your Vercel config
+    outDir: 'dist', // Matches Vercel's `distDir`
   },
 });

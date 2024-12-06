@@ -7,4 +7,6 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
   },
+  base: "/", // Use "/" for Vercel deployments
 });
+

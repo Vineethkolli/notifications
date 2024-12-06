@@ -1,16 +1,18 @@
 {
   "version": 2,
-  "name": "frontend",
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
+    {
+      "src": "/sw.js",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"

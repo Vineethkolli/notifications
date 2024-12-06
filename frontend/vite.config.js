@@ -3,14 +3,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/", // Root base path for deployment
   build: {
     outDir: "dist",
     emptyOutDir: true,
   },
-  base: "/", // Use "/" for Vercel deployments
-  server: {
-    mimeTypes: {
-      'application/javascript': ['js']
-    }
-  }
 });

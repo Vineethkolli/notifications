@@ -5,7 +5,7 @@ const App = () => {
 
   const subscribeToNotifications = async () => {
     try {
-      const registration = await navigator.serviceWorker.register("./sw.js");
+      const registration = await navigator.serviceWorker.register("/sw.js");
 
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,

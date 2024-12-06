@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 
 const App = () => {
   const [permission, setPermission] = useState(Notification.permission);

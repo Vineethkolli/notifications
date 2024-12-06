@@ -11,12 +11,15 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/sw.js",
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "dest": "/sw.js"
     },
     {
-      "src": "/sw.js",
-      "dest": "/sw.js"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }

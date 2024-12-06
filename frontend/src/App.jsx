@@ -1,0 +1,56 @@
+import React, { useState } from "react";
+
+const App = () => {
+  const [permission, setPermission] = useState(Notification.permission);
+
+  const subscribeToNotifications = async () => {
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js");
+
+      const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: import.meta.env.VITE_PUBLIC_VAPID_KEY,
+      });
+
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/subscribe`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(subscription),
+      });
+
+      if (response.ok) {
+        setPermission(Notification.permission);
+        alert("Notifications Enabled!");
+      } else {
+        alert("Failed to enable notifications.");
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
+    }
+  };
+
+  const sendNotification = async () => {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/notify`, {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      alert("Notification sent!");
+    } else {
+      alert("Failed to send notification.");
+    }
+  };
+
+  return (
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h1>Web Push Notifications</h1>
+      <p>Notification Permission: {permission}</p>
+      <button onClick={subscribeToNotifications}>Allow Notifications</button>
+      <button onClick={sendNotification} style={{ marginLeft: "10px" }}>
+        Send Notification
+      </button>
+    </div>
+  );
+};
+
+export default App;

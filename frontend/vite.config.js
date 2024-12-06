@@ -8,5 +8,9 @@ export default defineConfig({
     emptyOutDir: true,
   },
   base: "/", // Use "/" for Vercel deployments
+  server: {
+    mimeTypes: {
+      'application/javascript': ['js']
+    }
+  }
 });
-

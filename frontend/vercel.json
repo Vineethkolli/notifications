@@ -20,6 +20,7 @@
     },
     {
       "src": "/sw.js",
+      "headers": { "Cache-Control": "no-cache" },
       "dest": "/sw.js"
     }
   ]

@@ -11,21 +11,16 @@
   ],
   "routes": [
     {
-      "src": "/sw.js",
-      "headers": { "Cache-Control": "no-cache" },
-      "dest": "/sw.js"
+      "src": "/(.*)",
+      "dest": "/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  "headers": [
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
     {
-      "source": "/sw.js",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache" }
-      ]
+      "src": "/sw.js",
+      "dest": "/sw.js"
     }
   ]
 }

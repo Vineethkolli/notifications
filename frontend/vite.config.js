@@ -1,19 +1,25 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  plugins: [react()],
-  base: "/", 
+  plugins: [
+    react(),
+    VitePWA({
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.js",
+    }),
+  ],
+  base: "/",
   build: {
     outDir: "dist",
-    emptyOutDir: true,
-    target: "es2015", // Ensures better compatibility with iOS devices
+    target: ["es2015"],
+    polyfillDynamicImport: true,
   },
   server: {
     strictPort: true,
-    host: true, // Allows access from local network for testing on iOS
-  },
-  define: {
-    "process.env": {}, 
+    host: true,
+    port: 3000,
   },
 });

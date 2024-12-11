@@ -50,8 +50,8 @@ app.post("/subscribe", async (req, res) => {
 // Send Notification
 app.post("/notify", async (req, res) => {
   const payload = JSON.stringify({
-    title: "Device Notification",
-    body: "You have a new notification!",
+    title: "NBK Youth",
+    body: "This is Vineeth",
   });
 
   try {
